@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package report;
+package myCustomReport;
 
-import "pkg/adapter/template/TemplateExtensions.proto";
+import "mixer/v1/template/extensions.proto";
 
-option (istio.mixer.v1.config.template.template_variety) = TEMPLATE_VARIETY_REPORT;
+option (istio.mixer.v1.template.template_variety) = TEMPLATE_VARIETY_REPORT;
 
+// some meaningful comment with examples ..
 message Template {
-
+    // some meaningful comment ..
     int64 int64Primitive = 3;
-
 }
