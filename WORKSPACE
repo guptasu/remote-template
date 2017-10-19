@@ -2,17 +2,22 @@ workspace(name = "com_github_guptasu_report")
 
 git_repository(
     name = "io_bazel_rules_go",
-    commit = "7991b6353e468ba5e8403af382241d9ce031e571",  # Aug 1, 2017 (gazelle fixes)
+    commit = "9cf23e2aab101f86e4f51d8c5e0f14c012c2161c",  # Aug 1, 2017 (gazelle fixes)
     remote = "https://github.com/bazelbuild/rules_go.git",
 )
 
-load("@io_bazel_rules_go//go:def.bzl", "go_repositories", "go_repository")
+load("@io_bazel_rules_go//go:def.bzl", "go_rules_dependencies", "go_register_toolchains")
+go_rules_dependencies()
+go_register_toolchains(go_version="1.8.3")
 
-go_repositories()
+load("@io_bazel_rules_go//proto:def.bzl", "proto_register_toolchains")
+proto_register_toolchains()
+
+load("@io_bazel_rules_go//go:def.bzl", "go_repository")
 
 go_repository(
     name = "com_github_istio_mixer",
-    commit = "3e91418c34d4bf92819b06ffcec23d7bcddb889b",
+    commit = "0abf3496329789992df39f752a5af8e76686f2c7",
     importpath = "istio.io/mixer",
 )
 
